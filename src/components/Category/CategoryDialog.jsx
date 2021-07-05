@@ -4,11 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import {FormControl, Grid, InputLabel, MenuItem, Select} from "@material-ui/core";
-import {v4 as uuidv4} from "uuid";
-import {expenseCategories, incomeCategories} from "../../constants/categories";
+import {FormControl, InputLabel, MenuItem, Select} from "@material-ui/core";
 import Icon from '@material-ui/core/Icon';
 import ListItemText from "@material-ui/core/ListItemText/ListItemText";
 import {ExpenseTrackerContext} from "../../context/context";
@@ -22,7 +19,7 @@ export default function CategoryDialog(props) {
     };
     let category_type = 'Income';
     const [formData, setFormData] = useState(initialState);
-    const {addCategory} = useContext(ExpenseTrackerContext);
+    const {addIncomeCategory, addExpenseCategory} = useContext(ExpenseTrackerContext);
 
     // const {addCategory} = useContext(ExpenseTrackerContext);
 
@@ -40,8 +37,8 @@ export default function CategoryDialog(props) {
     const handleCreateCategory = () => {
         const color = category_type === 'Income' ? `rgb(0,${generateRandomIntegerInRange(100, 255)},0)` : `rgb(${generateRandomIntegerInRange(130, 255)},0,0)`;
         const category = {...formData, color: color};
-        const categoryData = {data: category, categoryType: category_type}
-        addCategory(categoryData);
+        // const categoryData = {data: category, categoryType: category_type};
+        category_type === 'Income' ? addIncomeCategory(category) : addExpenseCategory(category);
 
         setFormData(initialState);
 

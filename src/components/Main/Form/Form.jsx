@@ -1,11 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {TextField, Typography, Grid, Button, FormControl, InputLabel, Select, MenuItem} from "@material-ui/core";
-import {Doughnut} from 'react-chartjs-2';
 import useStyles from './styles';
 import {ExpenseTrackerContext} from '../../../context/context';
 import {v4 as uuidv4} from 'uuid';
-import {incomeCategories, expenseCategories} from "../../../constants/categories";
-import formatDate from '../../../utils/formatDate';
+// import {incomeCategories, expenseCategories} from "../../../constants/categories";
 import {useSpeechContext} from "@speechly/react-client";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import CustomizedSnackbar from "../../Snackbar/Snackbar";
@@ -19,7 +17,8 @@ const initialState = {
 const Form = () => {
     const classes = useStyles();
     const [formData, setFormData] = useState(initialState);
-    const {addTransaction} = useContext(ExpenseTrackerContext);
+    const {addTransaction, incomeCategories, expenseCategories} = useContext(ExpenseTrackerContext);
+    console.log(incomeCategories)
     const {segment} = useSpeechContext();
     const [open, setOpen] = useState(false);
     useEffect(() => {
