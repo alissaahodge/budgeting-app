@@ -1,0 +1,17 @@
+#root, body, html {
+    height: 100%;
+    margin: 0;
+}
+
+/*body{*/
+/*background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('./assets/images/backgrounds/salmon-color-bg.jpeg');*/
+/*    background-size: cover;*/
+/*}*/
+
+body {
+   /*Patern from  https://www.magicpattern.design/tools/css-backgrounds*/
+    background-color: #c5c5e8;
+    opacity: 0.8;
+    background-image: radial-gradient(#be7cb0 0.5px, #e5e5f7 0.5px);
+    background-size: 10px 10px;
+}
