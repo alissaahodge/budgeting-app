@@ -20,7 +20,6 @@ export const Provider = ({children}) => {
         dispatch({type: 'ADD_TRANSACTION', payload: transaction});
     };
     const addIncomeCategory = (category) => {
-        console.log(category, "this is in context")
         incomeCategoryDispatch({type: 'ADD_INCOME_CATEGORY', payload: category});
     };
     const addExpenseCategory = (category) => {

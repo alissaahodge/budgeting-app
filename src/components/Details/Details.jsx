@@ -13,6 +13,7 @@ const Details = ({title}) => {
             <CardContent>
                 <Typography variant="h5">${total}</Typography>
                 <Doughnut data={chartData}/>
+             {total===0 && <Typography className={classes.ifNone}>NO {title.toUpperCase()} AVAILABLE</Typography> }
             </CardContent>
         </Card>
     );

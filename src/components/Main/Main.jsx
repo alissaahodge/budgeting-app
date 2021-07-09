@@ -22,7 +22,7 @@ const Main = () => {
                 <Divider className={classes.divider}/>
                 <Form/>
             </CardContent>
-            <CardContent className={classes.cardContent}>
+            <CardContent className={classes.cartContent}>
                 <Grid container>
                     <Grid item xs={12}>
                         <List/>
