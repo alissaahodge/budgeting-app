@@ -11,6 +11,14 @@ const categoryContextReducer = (state, action) => {
             expenseCategories = [action.payload, ...state];
             localStorage.setItem('expenseCategories', JSON.stringify(expenseCategories));
             return expenseCategories;
+        case 'REMOVE_EXPENSE_CATEGORY':
+            expenseCategories = state.filter((c)=>c.id!==action.payload);
+            localStorage.setItem('expenseCategories', JSON.stringify(expenseCategories));
+            return expenseCategories;
+        case 'REMOVE_INCOME_CATEGORY':
+            incomeCategories = state.filter((c)=>c.id!==action.payload);
+            localStorage.setItem('incomeCategories', JSON.stringify(incomeCategories));
+            return incomeCategories;
         default:
             return state;
     }

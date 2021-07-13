@@ -18,7 +18,6 @@ const Form = () => {
     const classes = useStyles();
     const [formData, setFormData] = useState(initialState);
     const {addTransaction, incomeCategories, expenseCategories} = useContext(ExpenseTrackerContext);
-    console.log(incomeCategories)
     const {segment} = useSpeechContext();
     const [open, setOpen] = useState(false);
     useEffect(() => {
