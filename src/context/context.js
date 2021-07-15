@@ -2,6 +2,8 @@ import React, {useReducer, createContext} from 'react';
 import contextReducer from './contextReducer';
 import categoryContextReducer from './CategoryContextReducer';
 import {incomeCategories, expenseCategories} from "../constants/categories";
+import {ADD_INCOME_CATEGORY, ADD_EXPENSE_CATEGORY, DELETE_EXPENSE_CATEGORY, DELETE_INCOME_CATEGORY, UPDATE_INCOME_CATEGORY, UPDATE_EXPENSE_CATEGORY, DELETE_TRANSACTION, ADD_TRANSACTION} from "../constants/actionTypes";
+
 
 const transactionsInitialState = JSON.parse(localStorage.getItem('transactions')) || [];
 const incomeCategoriesInitialState = JSON.parse(localStorage.getItem('incomeCategories')) || incomeCategories;
@@ -14,17 +16,31 @@ export const Provider = ({children}) => {
     const [expenseCategories, expenseCategoryDispatch] = useReducer(categoryContextReducer, expenseCategoriesInitialState);
     //action creators
     const deleteTransaction = (id) => {
-        dispatch({type: 'DELETE_TRANSACTION', payload: id});
+        dispatch({type: DELETE_TRANSACTION, payload: id});
     };
     const addTransaction = (transaction) => {
-        dispatch({type: 'ADD_TRANSACTION', payload: transaction});
+        dispatch({type: ADD_TRANSACTION, payload: transaction});
     };
     const addIncomeCategory = (category) => {
-        incomeCategoryDispatch({type: 'ADD_INCOME_CATEGORY', payload: category});
+        incomeCategoryDispatch({type: ADD_INCOME_CATEGORY, payload: category});
     };
     const addExpenseCategory = (category) => {
-        expenseCategoryDispatch({type: 'ADD_EXPENSE_CATEGORY', payload: category});
+        expenseCategoryDispatch({type: ADD_EXPENSE_CATEGORY, payload: category});
     };
+    const deleteIncomeCategory = (id) => {
+        incomeCategoryDispatch({type: DELETE_INCOME_CATEGORY, payload: id});
+    };
+    const deleteExpenseCategory = (id) => {
+        expenseCategoryDispatch({type: DELETE_EXPENSE_CATEGORY, payload: id});
+    };
+    const updateIncomeCategory = (id, category) => {
+        incomeCategoryDispatch({type: UPDATE_INCOME_CATEGORY, payload: {id, category}});
+    };
+
+    const updateExpenseCategory = (id, category) => {
+        expenseCategoryDispatch({type: UPDATE_EXPENSE_CATEGORY, payload: {id, category}});
+    };
+
     const balance = transactions.reduce((acc, currVal) => {
         return (currVal.type === 'Expense') ? acc - currVal.amount : acc + currVal.amount;
     }, 0);
@@ -35,6 +51,10 @@ export const Provider = ({children}) => {
                 addTransaction,
                 addIncomeCategory,
                 addExpenseCategory,
+                deleteIncomeCategory,
+                deleteExpenseCategory,
+                updateIncomeCategory,
+                updateExpenseCategory,
                 transactions,
                 incomeCategories,
                 expenseCategories,
