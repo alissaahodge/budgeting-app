@@ -33,12 +33,12 @@ export const Provider = ({children}) => {
     const deleteExpenseCategory = (id) => {
         expenseCategoryDispatch({type: DELETE_EXPENSE_CATEGORY, payload: id});
     };
-    const updateIncomeCategory = (id, category) => {
-        incomeCategoryDispatch({type: UPDATE_INCOME_CATEGORY, payload: {id, category}});
+    const updateIncomeCategory = (category) => {
+        incomeCategoryDispatch({type: UPDATE_INCOME_CATEGORY, payload: category});
     };
 
-    const updateExpenseCategory = (id, category) => {
-        expenseCategoryDispatch({type: UPDATE_EXPENSE_CATEGORY, payload: {id, category}});
+    const updateExpenseCategory = (category) => {
+        expenseCategoryDispatch({type: UPDATE_EXPENSE_CATEGORY, payload: category});
     };
 
     const balance = transactions.reduce((acc, currVal) => {

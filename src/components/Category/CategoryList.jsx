@@ -13,7 +13,7 @@ import TablePagination from "@material-ui/core/TablePagination";
 import {ExpenseTrackerContext} from "../../context/context";
 
 
-const CategoryList = ({setCurrentId, setCategoryType, type}) => {
+const CategoryList = ({setCurrentId, setCategoryType, type, setFormData}) => {
     const classes = useStyles();
     const {deleteExpenseCategory, deleteIncomeCategory, incomeCategories, expenseCategories} = useContext(ExpenseTrackerContext);
     const [page, setPage] = useState(0);
@@ -32,9 +32,10 @@ const CategoryList = ({setCurrentId, setCategoryType, type}) => {
         setPage(0);
     };
 
-    const handleUpdate = (id) => {
-        setCurrentId(id);
+    const handleUpdate = (category) => {
+        setCurrentId(category.id);
         setCategoryType(type);
+        setFormData(category);
 
 
     };
@@ -71,7 +72,7 @@ const CategoryList = ({setCurrentId, setCategoryType, type}) => {
                                                 {column.id === 'actions' && <div>
                                                     <Button
                                                         onClick={() => handleRemoveCategory(row.id)}><DeleteIcon/></Button><Button
-                                                    onClick={() => handleUpdate(row.id)}><EditIcon/></Button>
+                                                    onClick={() => handleUpdate(row)}><EditIcon/></Button>
                                                 </div>} {column.format && typeof value === 'number' ? column.format(value) : value}
                                             </TableCell>
                                         );

@@ -21,14 +21,14 @@ import useStyles from './styles';
 import TabPanel from '../UI/TabPanel/TabPanel';
 import CategoryList from './CategoryList';
 
-export default function CategoryDialog(props) {
+const CategoryDialog = (props)=> {
     const initialState = {
         id: Math.random(),
         amount: 0,
         type: '',
         color: '#ffffff'
     };
-    const {addIncomeCategory, addExpenseCategory, incomeCategories, expenseCategories} = useContext(ExpenseTrackerContext);
+    const {addIncomeCategory, addExpenseCategory, updateIncomeCategory, updateExpenseCategory} = useContext(ExpenseTrackerContext);
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [formData, setFormData] = useState(initialState);
@@ -53,20 +53,21 @@ export default function CategoryDialog(props) {
     };
     const handleTabChange = (event, newValue) => {
         setTabValue(newValue);
+        categoryType === "Income" ? setCategoryType("Expense") : setCategoryType("Income");
     };
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (currentId === 0 || currentId == null) {
 
             const color = categoryType === 'Income' ? `rgb(0,${generateRandomIntegerInRange(100, 255)},0)` : `rgb(${generateRandomIntegerInRange(130, 255)},0,0)`;
             const category = {...formData, color: color};
             categoryType === 'Income' ? addIncomeCategory(category) : addExpenseCategory(category);
         } else {
+            console.log(formData)
+            categoryType === 'Income' ? updateIncomeCategory(formData) : updateExpenseCategory(formData);
 
         }
         clear();
-
-        // handleClose();
-
     };
     const clear = () => {
         setFormData(initialState);
@@ -79,8 +80,8 @@ export default function CategoryDialog(props) {
             <Icon className="fa fa-plus-circle" style={{fontSize: 30}}/>
             <ListItemText primary="Manage Categories" onClick={handleClickOpen}/>
 
-            <Dialog fullScreen open={open} onClose={handleClose} aria-labelledby="form-dialog-title"
-                    TransitionComponent={Transition}>
+            <Dialog fullScreen open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    {/*// TransitionComponent={Transition}>*/}
                 <AppBar className={classes.appBar}>
                     <Toolbar>
                         <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
@@ -111,11 +112,13 @@ export default function CategoryDialog(props) {
 
                                     <TabPanel value={tabValue} index={0}>
                                         <CategoryList setCurrentId={setCurrentId}
-                                                      setCategoryType={setCategoryType} type="Income"/></TabPanel>
+                                                      setCategoryType={setCategoryType} type="Income"
+                                                      setFormData={setFormData}/></TabPanel>
                                     <TabPanel index={1} value={tabValue}>
 
                                         <CategoryList setCurrentId={setCurrentId}
-                                                      setCategoryType={setCategoryType} type="Expense"/>
+                                                      setCategoryType={setCategoryType} type="Expense"
+                                                      setFormData={setFormData}/>
                                     </TabPanel></div>
                             </Paper><br/>
                         </Grid>
@@ -172,6 +175,7 @@ export default function CategoryDialog(props) {
     )
         ;
 }
+export default CategoryDialog;
 
 function generateRandomIntegerInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
