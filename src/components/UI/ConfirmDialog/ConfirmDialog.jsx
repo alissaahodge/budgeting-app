@@ -7,7 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {useTheme} from '@material-ui/core/styles';
 
-export default function ConfirmDialog({dialogText, okBtnText, cancelBtnTxt, openState, removeFunction, id, dialogBtn}) {
+export default function ConfirmDialog({dialogText, okBtnText, cancelBtnTxt, openState, removeFunction, id, dialogBtnTxt}) {
     const [open, setOpen] = React.useState(openState);
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -26,7 +26,7 @@ export default function ConfirmDialog({dialogText, okBtnText, cancelBtnTxt, open
 
     return (
         <Fragment>
-            <div onClick={handleClickOpen}> {dialogBtn}</div>
+            <Button onClick={handleClickOpen}> {dialogBtnTxt}</Button>
             <Dialog
                 fullScreen={fullScreen}
                 open={open}

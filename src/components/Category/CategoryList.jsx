@@ -46,7 +46,7 @@ const CategoryList = ({setCurrentId, setCategoryType, type, setFormData}) => {
     };
 
     return (<Fragment><TableContainer className={classes.container}>
-            <h2 Justify="center" className={classes.categoryName}>Income Categories</h2>
+            <h2 Justify="center" className={classes.categoryName}>{type === "Income" ? 'Income Categories' : 'Expense Categories'}</h2>
             <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow>
@@ -74,7 +74,7 @@ const CategoryList = ({setCurrentId, setCategoryType, type, setFormData}) => {
                                                         <ConfirmDialog
                                                             dialogText="Are You Sure You Want to Delete This?"
                                                             okBtnText="Yes" cancelBtnTxt="No" openState={false}
-                                                            removeFunction={handleRemoveCategory} id={row.id} dialogBtn={<><Button><DeleteIcon/></Button></>}/>
+                                                            removeFunction={handleRemoveCategory} id={row.id} dialogBtnTxt={<><DeleteIcon/></>}/>
 
                                                <Button onClick={() => handleUpdate(row)}><EditIcon/></Button>
                                             </div>} {column.format && typeof value === 'number' ? column.format(value) : value}
@@ -98,7 +98,7 @@ const CategoryList = ({setCurrentId, setCategoryType, type, setFormData}) => {
                                                         <ConfirmDialog
                                                             dialogText="Are You Sure You Want to Delete This?"
                                                             okBtnText="Yes" cancelBtnTxt="No" openState={false}
-                                                            removeFunction={handleRemoveCategory} id={row.id} dialogBtn={<><Button><DeleteIcon/></Button></>}/>
+                                                            removeFunction={handleRemoveCategory} id={row.id} dialogBtnTxt={<><DeleteIcon/></>}/>
 
                                                <Button onClick={() => handleUpdate(row)}><EditIcon/></Button>
                                             </div>} {column.format && typeof value === 'number' ? column.format(value) : value}
