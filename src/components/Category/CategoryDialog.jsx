@@ -63,7 +63,6 @@ const CategoryDialog = (props)=> {
             const category = {...formData, color: color};
             categoryType === 'Income' ? addIncomeCategory(category) : addExpenseCategory(category);
         } else {
-            console.log(formData)
             categoryType === 'Income' ? updateIncomeCategory(formData) : updateExpenseCategory(formData);
 
         }

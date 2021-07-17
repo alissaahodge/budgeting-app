@@ -74,7 +74,7 @@ const CategoryList = ({setCurrentId, setCategoryType, type, setFormData}) => {
                                                         <ConfirmDialog
                                                             dialogText="Are You Sure You Want to Delete This?"
                                                             okBtnText="Yes" cancelBtnTxt="No" openState={false}
-                                                            removeFunction={handleRemoveCategory} id={row.id} dialogBtnTxt={<><DeleteIcon/></>}/>
+                                                            removeFunction={()=>handleRemoveCategory(row.id)} id={row.id} dialogBtnTxt={<><DeleteIcon/></>}/>
 
                                                <Button onClick={() => handleUpdate(row)}><EditIcon/></Button>
                                             </div>} {column.format && typeof value === 'number' ? column.format(value) : value}

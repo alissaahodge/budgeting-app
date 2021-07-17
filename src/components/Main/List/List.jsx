@@ -12,16 +12,13 @@ import {
 } from '@material-ui/core';
 import {Delete, MoneyOff} from "@material-ui/icons";
 import {ExpenseTrackerContext} from "../../../context/context";
+import ConfirmDialog from "../../UI/ConfirmDialog/ConfirmDialog";
+import DeleteIcon from "@material-ui/core/SvgIcon/SvgIcon";
 
 const List = () => {
     const classes = useStyles();
     const {deleteTransaction, transactions} = useContext(ExpenseTrackerContext);
 
-    // const transactions = [
-    //     {id: 1, type: 'Income', category: 'Business', amount: 50, date: new Date().toDateString()},
-    //     {id: 2, type: 'Expense', category: 'Pets', amount: 39, date: new Date().toDateString()},
-    //     {id: 3, type: 'Business', category: 'Pets', amount: 203, date: new Date().toDateString()}
-    // ];
     return (
         <MUIList dense={false} className={classes.list}>
             {transactions.map((transaction) => (
@@ -36,7 +33,14 @@ const List = () => {
                         <ListItemText primary={transaction.category}
                                       secondary={`${transaction.amount} - ${transaction.date}`}/>
                         <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="delete" onClick={()=>deleteTransaction(transaction.id)}><Delete/></IconButton>
+                            {/*<IconButton edge="end" aria-label="delete"*/}
+                            {/*            onClick={() => deleteTransaction(transaction.id)}>*/}
+                                <ConfirmDialog
+                                    dialogText="Are You Sure You Want to Delete This?"
+                                    okBtnText="Yes" cancelBtnTxt="No" openState={false}
+                                    removeFunction={() => deleteTransaction(transaction.id)} id={transaction.id}
+                                    dialogBtnTxt={<><Delete/></>}/>
+                                {/*<Delete/></IconButton>*/}
                         </ListItemSecondaryAction>
                     </ListItem>
                 </Slide>

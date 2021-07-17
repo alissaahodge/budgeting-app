@@ -20,7 +20,7 @@ export default function ConfirmDialog({dialogText, okBtnText, cancelBtnTxt, open
         setOpen(false);
 
         if (choice === true) {
-            removeFunction(id)
+            removeFunction()
         }
     };
 
