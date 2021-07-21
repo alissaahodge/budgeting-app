@@ -21,7 +21,7 @@ import useStyles from './styles';
 import TabPanel from '../UI/TabPanel/TabPanel';
 import CategoryList from './CategoryList';
 
-const CategoryDialog = (props)=> {
+const CategoryDialog = (props) => {
     const initialState = {
         id: Math.random(),
         amount: 0,
@@ -80,7 +80,7 @@ const CategoryDialog = (props)=> {
             <ListItemText primary="Manage Categories" onClick={handleClickOpen}/>
 
             <Dialog fullScreen open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                    {/*// TransitionComponent={Transition}>*/}
+                {/*// TransitionComponent={Transition}>*/}
                 <AppBar className={classes.appBar}>
                     <Toolbar>
                         <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
@@ -111,11 +111,13 @@ const CategoryDialog = (props)=> {
 
                                     <TabPanel value={tabValue} index={0}>
                                         <CategoryList setCurrentId={setCurrentId}
+                                                      clear={clear}
                                                       setCategoryType={setCategoryType} type="Income"
                                                       setFormData={setFormData}/></TabPanel>
                                     <TabPanel index={1} value={tabValue}>
 
                                         <CategoryList setCurrentId={setCurrentId}
+                                                      clear={clear}
                                                       setCategoryType={setCategoryType} type="Expense"
                                                       setFormData={setFormData}/>
                                     </TabPanel></div>

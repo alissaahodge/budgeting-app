@@ -13,7 +13,7 @@ import TablePagination from "@material-ui/core/TablePagination";
 import {ExpenseTrackerContext} from "../../context/context";
 import ConfirmDialog from '../UI/ConfirmDialog/ConfirmDialog';
 
-const CategoryList = ({setCurrentId, setCategoryType, type, setFormData}) => {
+const CategoryList = ({setCurrentId, clear, setCategoryType, type, setFormData}) => {
     const classes = useStyles();
     const {deleteExpenseCategory, deleteIncomeCategory, incomeCategories, expenseCategories} = useContext(ExpenseTrackerContext);
     const [page, setPage] = useState(0);
@@ -46,7 +46,7 @@ const CategoryList = ({setCurrentId, setCategoryType, type, setFormData}) => {
     };
 
     return (<Fragment><TableContainer className={classes.container}>
-            <h2 Justify="center" className={classes.categoryName}>{type === "Income" ? 'Income Categories' : 'Expense Categories'}</h2>
+            <h2 Justify="center" className={classes.categoryName}>{type === "Income" ? 'Income Categories' : 'Expense Categories'} &nbsp; &nbsp; &nbsp;<Button variant="contained" onClick={clear}>ADD +</Button></h2>
             <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow>

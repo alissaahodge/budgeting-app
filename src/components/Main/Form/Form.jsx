@@ -61,7 +61,7 @@ const Form = () => {
 
     }, [segment]);
     const createTransaction = () => {
-        if (Number.isNaN(Number(formData.amount)) || !formData.date.includes('-')) return;
+        if (Number.isNaN(Number(formData.amount)) || formData.date == null || formData.category == null) return;
         const transaction = {...formData, amount: Number(formData.amount), id: uuidv4()};
         setOpen(true);
         addTransaction(transaction);

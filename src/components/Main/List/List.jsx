@@ -7,13 +7,11 @@ import {
     ListItemText,
     Avatar,
     ListItemSecondaryAction,
-    IconButton,
     Slide
 } from '@material-ui/core';
 import {Delete, MoneyOff} from "@material-ui/icons";
 import {ExpenseTrackerContext} from "../../../context/context";
 import ConfirmDialog from "../../UI/ConfirmDialog/ConfirmDialog";
-import DeleteIcon from "@material-ui/core/SvgIcon/SvgIcon";
 
 const List = () => {
     const classes = useStyles();
