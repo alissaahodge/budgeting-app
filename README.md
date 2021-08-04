@@ -15,3 +15,15 @@ You can log each expense/income with different categories and this app uses char
 - navigate to root
 - run `npm install`
 - run `npm start`
+
+
+### Screenshots
+#### Home
+<code>
+  <img src='https://github.com/alissaahodge/budgeting-app/blob/main/ReadMeImages/Screenshot%202021-08-04%20at%207.53.39%20AM.png?raw=true'/>
+</code>
+
+#### Manage Categories
+<code>
+  <img src='https://github.com/alissaahodge/budgeting-app/blob/main/ReadMeImages/Screenshot%202021-08-04%20at%207.54.07%20AM.png?raw=true'/>
+</code>
