@@ -1,4 +1,4 @@
-# Alissa's Budgeting App ``Using Reactjs``
+#  Budgeting App ``Using Reactjs``
 
 Description
 This mobile responsive app allows you to log/track your expenses along with your income so budgeting becomes much easier. 
